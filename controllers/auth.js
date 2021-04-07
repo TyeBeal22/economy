@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 export const register = async (req, res) => {
   try {
     console.log(req.body);
-    const { name, email, password } = req.body;
+    const { name, email, password,address } = req.body;
     // validation
     if (!name) return res.status(400).send("Name is required");
     if (!password || password.length < 6)

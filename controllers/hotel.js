@@ -128,18 +128,17 @@ export const isAlreadyBooked = async (req, res) => {
 };
 
 export const searchListings = async (req, res) => {
-  const { location, date, bed } = req.body;
-  // console.log(location, date, bed);
+  const { location } = req.body;
+  // date, bed console.log(location, date, bed);
   // console.log(date);
   const fromDate = date.split(",");
-  // console.log(fromDate[0]);
+  console.log(location);
   let result = await Hotel.find({
-    from: { $gte: new Date(fromDate[0]) },
-    location,
+    from: location
   })
     .select("-image.data")
     .exec();
-  // console.log("SEARCH LISTINGS", result);
+  console.log("SEARCH LISTINGS", result);
   res.json(result);
 };
 
